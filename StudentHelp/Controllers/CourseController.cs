@@ -69,27 +69,26 @@ namespace StudentHelp.Controllers
 
         public IActionResult Enrollment()
         {
-            try
-            {
-                //TODO: Solve Linq expression could not be translated
-                //ViewData["Enrollment"] = (from x in _context.StudentCourse
-                //                          group x by x.Course into xgroup
-                //                          select new EnrollmentDTO
-                //                          {
-                //                              CourseId = xgroup.Key.CourseId,
-                //                              CourseName = xgroup.Key.Name,
-                //                              Students = (from y in xgroup
-                //                                          select new EnrolledStudentPOCO
-                //                                          {
-                //                                              StudentId = y.StudentId,
-                //                                              CompletionDate = y.CompletionDate,
-                //                                              EnrolledDate = y.EnrolledDate,
-                //                                              Grade = y.Grade,
-                //                                              StudentName = y.Student.FirstName + " " + y.Student.LastName,
-                //                                          }).ToList(),
-                //                          }).ToList();
+           
+           // TODO: Solve Linq expression could not be translated
+            var enrollment = (from x in _context.StudentCourse
+                                      group x by x.Course into xgroup
+                                      select new EnrollmentDTO
+                                      {
+                                          CourseId = xgroup.Key.CourseId,
+                                          CourseName = xgroup.Key.Name,
+                                          Students = (from y in xgroup
+                                                      select new EnrolledStudentPOCO
+                                                      {
+                                                          StudentId = y.StudentId,
+                                                          CompletionDate = y.CompletionDate,
+                                                          EnrolledDate = y.EnrolledDate,
+                                                          Grade = y.Grade,
+                                                          StudentName = y.Student.FirstName + " " + y.Student.LastName,
+                                                      }).ToList(),
+                                      }).ToList();
 
-                ViewData["Enrollment"] = (from x in _context.Course
+                var enrollment2 = (from x in _context.Course
                                           select new EnrollmentDTO
                                           {
                                               CourseId = x.CourseId,
@@ -105,9 +104,11 @@ namespace StudentHelp.Controllers
                                                               StudentName = y.Student.FirstName + " " + y.Student.LastName,
                                                           }).ToList()
                                           }).ToList();
+                ViewData["Enrollment"] = enrollment;
                 return View();
 
-
+            try
+            {
             }
             catch (System.Exception e)
             {

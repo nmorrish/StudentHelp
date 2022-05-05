@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHelp", "StudentHelp\StudentHelp.csproj", "{923EA925-83DD-4425-BDC2-1D922E228284}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHelp", "StudentHelp\StudentHelp.csproj", "{923EA925-83DD-4425-BDC2-1D922E228284}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHelpWithRazor", "StudentHelpWithRazor\StudentHelpWithRazor.csproj", "{C88620B9-F190-49A2-9699-F8D5D3885387}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{923EA925-83DD-4425-BDC2-1D922E228284}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{923EA925-83DD-4425-BDC2-1D922E228284}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{923EA925-83DD-4425-BDC2-1D922E228284}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C88620B9-F190-49A2-9699-F8D5D3885387}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88620B9-F190-49A2-9699-F8D5D3885387}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88620B9-F190-49A2-9699-F8D5D3885387}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88620B9-F190-49A2-9699-F8D5D3885387}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
