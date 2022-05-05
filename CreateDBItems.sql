@@ -1,0 +1,253 @@
+--Drop tables for refresh
+DROP TABLE Student_Assignment;
+DROP TABLE Student_Course;
+DROP TABLE Assignment;
+DROP TABLE Student;
+DROP TABLE Course;
+
+--Create Tables
+BEGIN
+	CREATE TABLE Course (
+		Course_Id int NOT NULL CONSTRAINT PK_Course PRIMARY KEY CLUSTERED,
+		Name varchar(30) NOT NULL CONSTRAINT UC_CourseName UNIQUE,
+		Description varchar(2000) NOT NULL
+	);
+
+	CREATE TABLE Student (
+		Student_Id int NOT NULL IDENTITY (100000,1) CONSTRAINT PK_Student PRIMARY KEY CLUSTERED,
+		FirstName varchar(50) NOT NULL,
+		LastName varchar(50) NOT NULL, 
+		Email varchar(60) NOT NULL,
+		RegistrationDate datetime NOT NULL DEFAULT GETDATE()
+	);
+
+	CREATE TABLE Assignment (
+		Assignment_Id int NOT NULL CONSTRAINT PK_Assignment PRIMARY KEY CLUSTERED,
+		Course_Id int NOT NULL CONSTRAINT FK_Assignment_Course REFERENCES Course(Course_Id),
+		Name varchar(30) NOT NULL,
+		Description varchar(2000) NOT NULL,
+		AssignedDate datetime NOT NULL,
+		DueDate datetime NOT NULL
+	);
+
+	CREATE TABLE Student_Course (
+		Student_Id int NOT NULL CONSTRAINT FK_StudentCourse_Student REFERENCES Student(Student_Id),
+		Course_Id int NOT NULL CONSTRAINT FK_StudentCourse_Course REFERENCES Course(Course_Id),
+		EnrolledDate datetime NOT NULL,
+		CompletionDate datetime NULL,
+		Grade int NULL,
+		CONSTRAINT PK_StudentCourse PRIMARY KEY CLUSTERED (Student_Id, Course_Id)
+	);
+
+	CREATE TABLE Student_Assignment (
+		Student_Id int NOT NULL CONSTRAINT FK_StudentAssignment_Student REFERENCES Student(Student_Id),
+		Assignment_Id int NOT NULL CONSTRAINT FK_StudentAssignment_Assignment REFERENCES Assignment(Assignment_Id),
+		DateSubmitted datetime NULL,
+		Grade int NULL,
+		CONSTRAINT PK_StudentAssignment PRIMARY KEY CLUSTERED (Student_Id, Assignment_Id)
+	)
+END
+
+--Insert Users
+BEGIN
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shin','Bottommorsel','shin@bottom.morsel')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Dusk','Cindersin','dusk@cinder.sin')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hurricane','Stringbrother','hurricane@string.brother')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Beast','Heatlesson','beast@heat.lesson')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Puzzle','Flickerbattle','puzzle@flicker.battle')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Jail','Couplemonk','jail@couple.monk')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Fleck','Competitionyearling','fleck@competition.yearling')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Phrase','Confidencehome','phrase@confidence.home')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Breath','Midnightworker','breath@midnight.worker')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Mansion','Childflute','mansion@child.flute')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Nadir','Jesterlens','nadir@jester.lens')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Braid','Bristleharmony','braid@bristle.harmony')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Domain','Pregnancyfrog','domain@pregnancy.frog')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Corruption','Vigoronion','corruption@vigor.onion')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Putrescence','Dreaduncertainty','putrescence@dread.uncertainty')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Web','Rabblegorge','web@rabble.gorge')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Crystal','Womanpimple','crystal@woman.pimple')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Universe','Miteconnection','universe@mite.connection')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Dessert','Confinementtax','dessert@confinement.tax')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Cut','Order hope','cut@order .hope')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Lull','Lessonflimsiness','lull@lesson.flimsiness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Prophecy','Equivalenceseason','prophecy@equivalence.season')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hip','Shadowpimple','hip@shadow.pimple')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Scream','Sorceryscratch','scream@sorcery.scratch')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Confusion','Conventadmiration','confusion@convent.admiration')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Dreg','Lungdrawl','dreg@lung.drawl')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Curse','Toeshingle','curse@toe.shingle')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Meadow','Moralitycusp','meadow@morality.cusp')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shelter','Combatgarlic','shelter@combat.garlic')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ford','Baldnesssmile','ford@baldness.smile')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Plate','Gazedesk','plate@gaze.desk')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Cavern','Furswallow','cavern@fur.swallow')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Scribe','Armorice','scribe@armor.ice')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Comedy','Dusklegend','comedy@dusk.legend')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Rout','Dimensionshriek','rout@dimension.shriek')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Flayer','Woodlizard','flayer@wood.lizard')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Fist','Darknessmeal ','fist@darkness.meal ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shell','Heartbeetle','shell@heart.beetle')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Crusher','Contesthell','crusher@contest.hell')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Twine','Imagegrasp','twine@image.grasp')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Daub','Weaselgrape','daub@weasel.grape')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Intricacy','Meditationgame','intricacy@meditation.game')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Valley','Yorecoincidence','valley@yore.coincidence')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Fall','Volcanoshow','fall@volcano.show')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Play ','Abyssdefender','play @abyss.defender')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Bank','Ferryapple','bank@ferry.apple')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Stasis','Hatredtragedy','stasis@hatred.tragedy')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Persuader','Dutyveneration','persuader@duty.veneration')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shack','Date tempest','shack@date .tempest')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Permanency','Routmarket','permanency@rout.market')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Lover','Soulbalance','lover@soul.balance')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Abatement','Speakerbridle','abatement@speaker.bridle')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Chip','Defectimmortality','chip@defect.immortality')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ape','Stancesliver','ape@stance.sliver')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Abbey','Omenautonomy','abbey@omen.autonomy')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Obscenity','Spygrief','obscenity@spy.grief')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Warmth','Uglinessrenown','warmth@ugliness.renown')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Morality','Tailtower','morality@tail.tower')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Blueness','Towerscrape','blueness@tower.scrape')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Void','Habitrein','void@habit.rein')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Abbey','Pantherdistance','abbey@panther.distance')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Belt','Spearmold','belt@spear.mold')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Mastery','Princepartner','mastery@prince.partner')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Righteousness','Garlicassault','righteousness@garlic.assault')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Blossom','Equivalencegarnish','blossom@equivalence.garnish')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Faction','Silkpoetry','faction@silk.poetry')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sewer','Beepet','sewer@bee.pet')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Home','Morasscritter','home@morass.critter')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Grave','Sweatlark','grave@sweat.lark')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Creed','Fealtytruth','creed@fealty.truth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Bristle','Breachfold','bristle@breach.fold')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Wing','Lightleopard','wing@light.leopard')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ferocity','Headbasis','ferocity@head.basis')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Soot','Platemystery','soot@plate.mystery')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Dungeon','Unioncalm','dungeon@union.calm')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Balance','Cobraforest','balance@cobra.forest')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Belly','Depression bowl','belly@depression .bowl')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Wail','Lownessvirginity','wail@lowness.virginity')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Eerieness','Lineolive','eerieness@line.olive')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sorrow','Hedgebusiness','sorrow@hedge.business')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Prank','Summitshack','prank@summit.shack')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Bandit','Allyghoul','bandit@ally.ghoul')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sweat','Rotpick','sweat@rot.pick')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Moth','Feedtest','moth@feed.test')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Duty','Safetycircle','duty@safety.circle')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Island','Groovekindness','island@groove.kindness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Verse','Crateraquamarine','verse@crater.aquamarine')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Spittle','Burnbarricade','spittle@burn.barricade')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Letter','Dungeonblot','letter@dungeon.blot')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shrine','Holinessbrush','shrine@holiness.brush')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Convent','Controljoke','convent@control.joke')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ring','Larkbolt','ring@lark.bolt')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Barbarity','Throwervictim','barbarity@thrower.victim')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Creek','Pukecontingent','creek@puke.contingent')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Modesty','Miseryeater','modesty@misery.eater')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Raven','Buzzarddessert','raven@buzzard.dessert')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Snake','Intensitycombination','snake@intensity.combination')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Evaporation','Spring tiredness','evaporation@spring .tiredness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ghoul','Whiplife','ghoul@whip.life')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Strangulation','Vegetationwarmth','strangulation@vegetation.warmth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Temple ','Allybud','temple @ally.bud')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Wish','Peaklaw','wish@peak.law')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Jailer','Thiefivory','jailer@thief.ivory')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Wind','Starvationshriek','wind@starvation.shriek')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Phantom','Greatnesslung','phantom@greatness.lung')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Swine','Gripshaft','swine@grip.shaft')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Vegetation','Prophettrench','vegetation@prophet.trench')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ravager','Satintwine','ravager@satin.twine')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Cavity','Inconveniencespine','cavity@inconvenience.spine')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Jewel','Creaturecontrol','jewel@creature.control')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Labyrinth','Rideroil','labyrinth@rider.oil')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Depth','Fooldoctrine','depth@fool.doctrine')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hound','Destinymachine','hound@destiny.machine')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Right','Apexmetal','right@apex.metal')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Vale','Wartflash','vale@wart.flash')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Citadel','Hoghop','citadel@hog.hop')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Conjunction','Scholarsoot','conjunction@scholar.soot')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Authority','Gameearth','authority@game.earth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Beer','Hurricanegreatness','beer@hurricane.greatness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hood','Pointhero','hood@point.hero')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Dell','Principlerogue','dell@principle.rogue')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sabre','Ashspasm','sabre@ash.spasm')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shred','Guildphantom','shred@guild.phantom')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Oar','Throwercombat','oar@thrower.combat')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Jack','Beerbitterness','jack@beer.bitterness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ripeness','Mastersap','ripeness@master.sap')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Rooter','Warriorearth','rooter@warrior.earth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Insight','Callglory','insight@call.glory')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Devil','Wanefury','devil@wane.fury')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Goal','Tomesleeve','goal@tome.sleeve')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Casket','Tornadoblame','casket@tornado.blame')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Evenness','Tuskmange','evenness@tusk.mange')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Taker','Quakebandit','taker@quake.bandit')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Canyon','Familymead','canyon@family.mead')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hearth','Crusherpoker','hearth@crusher.poker')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Knot','Parityspike','knot@parity.spike')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Bloodiness','Whiskytub','bloodiness@whisky.tub')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Indignation','Idlenessdisappearance','indignation@idleness.disappearance')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hammer','Masteryspring ','hammer@mastery.spring ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Panther','Lambkiss','panther@lamb.kiss')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Casket','Oakgroup','casket@oak.group')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Wind','Abbeyiron','wind@abbey.iron')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Slave','Admirationmeal ','slave@admiration.meal ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Exaltation','Wavinessvictim','exaltation@waviness.victim')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sick','Ripperair','sick@ripper.air')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Saffron','Authorspice','saffron@author.spice')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Sinew','Mudfaith ','sinew@mud.faith ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Scar','Greennessshield','scar@greenness.shield')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Radiance','Roguescale','radiance@rogue.scale')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Rasp','Flimsinessconfidence','rasp@flimsiness.confidence')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Song','Mongrelscale','song@mongrel.scale')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Skull','Roomplot','skull@room.plot')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Field','Cadblister','field@cad.blister')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Gloom','Familytheater','gloom@family.theater')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Habit','Frostbug','habit@frost.bug')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Quest','Facedecision','quest@face.decision')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Prophet','Cometrecluse','prophet@comet.recluse')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Monster','Blushscum','monster@blush.scum')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Mind','Conventtail','mind@convent.tail')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Smile','Ripperape','smile@ripper.ape')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Rock','Chastitychestnut','rock@chastity.chestnut')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Baby','Learninggland','baby@learning.gland')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Healer','Lancetribe','healer@lance.tribe')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Beetle','Oblivionwinnower','beetle@oblivion.winnower')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Treat','Whipmurk','treat@whip.murk')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Room','Tangledourness','room@tangle.dourness')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Plot','Play button','plot@play .button')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Gale','Marblecinnamon','gale@marble.cinnamon')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Practice','Temptationhaze','practice@temptation.haze')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Paddle','Uncleprince','paddle@uncle.prince')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Execution','Uncertaintychocolate','execution@uncertainty.chocolate')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Shower','Ripqueen','shower@rip.queen')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Influence','Scummold','influence@scum.mold')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Target','Rabblerip','target@rabble.rip')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Ring','Homeinconvenience','ring@home.inconvenience')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Yearling','Demoncloak','yearling@demon.cloak')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Twine','Treasonspire','twine@treason.spire')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Supper','Reinhill','supper@rein.hill')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Worth','Vaultname','worth@vault.name')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Drink','Bronzegulf ','drink@bronze.gulf ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Raven','Ripperfigure','raven@ripper.figure')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Fruit','Syrupvenom','fruit@syrup.venom')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Warrior','Columndeterioration','warrior@column.deterioration')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Worshipper','Padpassion','worshipper@pad.passion')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Jailer','Tormentgulf ','jailer@torment.gulf ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Hail','Bitecraze','hail@bite.craze')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('One','Diminishmentfuneral','one@diminishment.funeral')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Slit','Sapignorance','slit@sap.ignorance')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Mole','Burnyouth','mole@burn.youth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Flank','Meatrope','flank@meat.rope')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Friend','Incensecyst','friend@incense.cyst')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Frenzy','Conjunctionitch','frenzy@conjunction.itch')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Tummy','Poemorgan','tummy@poem.organ')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Domicile','Spongebow','domicile@sponge.bow')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Contingency','Owldrinker','contingency@owl.drinker')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Diamond','Hideaccident','diamond@hide.accident')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Twist','Focusmoth','twist@focus.moth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Tool','Twigwalk','tool@twig.walk')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Rust','Calltooth','rust@call.tooth')
+INSERT INTO Student (FirstName, LastName, Email) VALUES ('Leaping','Lizardfist','leaping@lizard.fist')
+END

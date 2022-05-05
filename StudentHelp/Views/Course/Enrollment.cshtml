@@ -1,0 +1,35 @@
+﻿@using StudentHelp.Views.Course.DTO
+@{
+    ViewData["Title"] = "Course Enrollment";
+    List<EnrollmentDTO> allEnrollment = (List<EnrollmentDTO>)ViewData["Enrollment"];
+}
+
+<h1>Course Enrollment</h1>
+
+<hr />
+
+@foreach (var course in allEnrollment)
+{
+    <ul class="border border-primary list-group">
+        <li class="list-group-item">
+            @course.CourseName (Id: @course.CourseId)
+            <a class="ml-5 btn btn-outline-primary" asp-controller="Course" asp-action="EnrollStudents" asp-route-id="@course.CourseId">Enroll Student</a>
+        </li>
+        <li class="list-group-item">
+            <ul>
+                @if (course.Students.Count == 0)
+                {
+                    <li class="row">No students enrolled</li>
+                }
+                else
+                {
+                    @foreach (var student in course.Students)
+                    {
+                        <li class="row"><span class="col-md-4">@student.StudentName</span> <span class="col-md-6">Grade @student.Grade%</span></li>
+                    }
+                }
+
+            </ul>
+        </li>
+    </ul>
+}
