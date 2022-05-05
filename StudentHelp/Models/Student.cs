@@ -29,7 +29,7 @@ namespace StudentHelp.Models
         [Required(ErrorMessage = "is required")]
         public string Email { get; set; }
 
-        [DataType(DataType.Date)]
+        [DataType(DataType.Date, ErrorMessage = "please enter a date")]
         public DateTime RegistrationDate { get; set; }
 
         public virtual ICollection<StudentAssignment> StudentAssignment { get; set; }

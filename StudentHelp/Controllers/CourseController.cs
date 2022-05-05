@@ -156,7 +156,7 @@ namespace StudentHelp.Controllers
             {
                 if (student.IsChecked)
                 {
-                    StudentCourse studentCourse = new StudentCourse
+                    StudentCourse studentCourse = new()
                     {
                         StudentId = student.StudentId,
                         CourseId = id,

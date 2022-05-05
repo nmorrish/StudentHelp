@@ -150,3 +150,4 @@ D:\_Data\Code\MentorSession1\StudentHelp\StudentHelp\bin\Debug\net5.0\runtimes\w
 D:\_Data\Code\MentorSession1\StudentHelp\StudentHelp\obj\Debug\net5.0\StudentHelp.Views.pdb
 D:\_Data\Code\MentorSession1\StudentHelp\StudentHelp\obj\Debug\net5.0\StudentHelp.csproj.CopyComplete
 D:\_Data\Code\MentorSession1\StudentHelp\StudentHelp\obj\Debug\net5.0\StudentHelp.genruntimeconfig.cache
+D:\_Data\Code\MentorSession1\StudentHelp\StudentHelp\obj\Debug\net5.0\Razor\Views\Assignment\StudentAssignments.cshtml.g.cs

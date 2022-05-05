@@ -2,6 +2,7 @@
 #nullable disable
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace StudentHelp.Models
 {
@@ -13,10 +14,24 @@ namespace StudentHelp.Models
         }
 
         public int AssignmentId { get; set; }
+
+        [Required(ErrorMessage = "is required")]
         public int CourseId { get; set; }
+
+        [StringLength(30, ErrorMessage = "cannot exceed 30 characters")]
+        [Required(ErrorMessage = "is required")]
         public string Name { get; set; }
+
+        [StringLength(2000, ErrorMessage = "cannot exceed 2000 characters")]
+        [Required(ErrorMessage = "is required")]
         public string Description { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "please enter a date")]
+        [Required(ErrorMessage = "is required")]
         public DateTime AssignedDate { get; set; }
+
+        [DataType(DataType.Date, ErrorMessage = "please enter a date")]
+        [Required(ErrorMessage = "is required")]
         public DateTime DueDate { get; set; }
 
         public virtual Course Course { get; set; }
