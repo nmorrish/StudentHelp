@@ -1,0 +1,13 @@
+How do you protect sensitive connection strings?
+How do you have multiple models in one razor view?
+How do you specify models that are passed between views and models. What are they by default?
+Render separate parts of the page (ie body then script)
+What do async tasks do precisely and where do you use them
+Best way to specify form data
+Is there a way to re-use ids from deleted rows?
+Antiforgery tokens. What is their default setting and how do I make sure they are in.
+
+Linq expression could not be translated. How to spot and how to avoid/toubleshoot
+
+How does .NET track entity instances. Try to avoid the following:
+'The instance of entity type 'Course' cannot be tracked because another instance with the same key value for {'CourseId'} is already being tracked. When attaching existing entities, ensure that only one entity instance with a given key value is attached. Consider using 'DbContextOptionsBuilder.EnableSensitiveDataLogging' to see the conflicting key values.'
