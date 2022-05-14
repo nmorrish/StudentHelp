@@ -1,0 +1,15 @@
+﻿@model Course
+@{
+    ViewData["Title"] = "Course Delete";
+}
+
+<h1>Delete @Model.Name?</h1>
+
+<form asp-action="Delete">
+    <input type="hidden" asp-for="CourseId"/>
+    <input type="hidden" asp-for="Description"/>
+    <input type="hidden" asp-for="Name"/>
+
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+</form>
+<a class="btn btn-success" asp-controller="Course" asp-action="Index">No, go back</a>

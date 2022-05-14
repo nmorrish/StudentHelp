@@ -1,0 +1,78 @@
+﻿@page
+@model StudentHelpRazor.Pages.Student.IndexModel
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Student</h1>
+
+<p>
+    <a asp-page="Create" class="btn btn-primary">Create New</a>
+</p>
+
+
+<table id="BasicDataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                Student ID
+            </th>
+            <th class="th-sm">
+                First Name
+            </th>
+            <th class="th-sm">
+                Last Name
+            </th>
+            <th class="th-sm">
+                Student Email
+            </th>
+            <th class="th-sm">
+                Date Registered
+            </th>
+            <th class="th-sm">
+                detail/edit/delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model.Student)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Email</td>
+                <td>@student.RegistrationDate.ToString("MMM dd, yyyy")</td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@student.StudentId" class="btn btn-info btn-sm">&#128269;</a>
+                    <a asp-page="./Edit" asp-route-id="@student.StudentId" class="btn btn-primary btn-sm">&#128203;</a>
+                    <a asp-page="./Delete" asp-route-id="@student.StudentId" class="btn btn-danger btn-sm">&#128465;</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="th-sm">
+                Student ID
+            </th>
+            <th class="th-sm">
+                First Name
+            </th>
+            <th class="th-sm">
+                Last Name
+            </th>
+            <th class="th-sm">
+                Student Email
+            </th>
+            <th class="th-sm">
+                Date Registered
+            </th>
+            <th class="th-sm">
+                
+            </th>
+        </tr>
+    </tfoot>
+</table>

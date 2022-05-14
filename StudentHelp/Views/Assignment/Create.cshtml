@@ -1,0 +1,42 @@
+﻿@model Assignment
+@{
+    ViewData["Title"] = "Create Assignment";
+}
+
+<h1>Create Assignment</h1>
+
+<form asp-action="Create">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label asp-for="CourseId" class="control-label">Select Course</label>
+        <select asp-for="CourseId" class="form-control" asp-items="ViewBag.Courses"></select>
+        <span asp-validation-for="CourseId" class="text-danger"></span>
+
+        <br />
+
+        <label asp-for="Name" class="control-label">Assignment Name</label>
+        <span asp-validation-for="Name" class="text-danger"></span>
+        <input class="form-control" type="text" asp-for="Name" />
+
+        <br />
+
+        <label asp-for="Description" class="control-label">Assignment Description</label>
+        <span asp-validation-for="Description" class="text-danger"></span>
+        <textarea class="form-control" type="email" asp-for="Description"></textarea>
+
+        <br />
+
+        <label asp-for="AssignedDate" class="control-label">Assigned Date</label>
+        <span asp-validation-for="AssignedDate" class="text-danger"></span>
+        <input class="form-control" type="date" asp-for="AssignedDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+        <br />
+
+        <label asp-for="DueDate" class="control-label">Due Date</label>
+        <span asp-validation-for="DueDate" class="text-danger"></span>
+        <input class="form-control" type="date" asp-for="DueDate" />
+
+    </div>
+    <button type="submit" class="btn btn-primary">Add Assignment</button>
+</form>

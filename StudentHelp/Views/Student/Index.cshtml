@@ -1,0 +1,80 @@
+﻿@model List<Student>
+@{
+    ViewData["Title"] = "Student";
+}
+
+<h1>Student Page</h1>
+
+<hr />
+
+<!-- Link to create student page-->
+<a asp-action="Create" asp-controller="Student" class="btn btn-success">Add Student</a>
+
+<h2 class="pt-5">All Students</h2>
+
+<table id="BasicDataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                Student ID
+            </th>
+            <th class="th-sm">
+                First Name
+            </th>
+            <th class="th-sm">
+                Last Name
+            </th>
+            <th class="th-sm">
+                Student Email
+            </th>
+            <th class="th-sm">
+                Date Registered
+            </th>
+            <th class="th-sm">
+                Delete?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.StudentId</td>
+                <td>@student.FirstName</td>
+                <td>@student.LastName</td>
+                <td>@student.Email</td>
+                <td>@student.RegistrationDate.ToString("MMM dd, yyyy")</td>
+                <td><a asp-route-id="@student.StudentId" asp-action="Delete" asp-controller="Student" class="btn btn-danger">X</a></td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="th-sm">
+                Student ID
+            </th>
+            <th class="th-sm">
+                First Name
+            </th>
+            <th class="th-sm">
+                Last Name
+            </th>
+            <th class="th-sm">
+                Student Email
+            </th>
+            <th class="th-sm">
+                Date Registered
+            </th>
+            <th class="th-sm">
+                Delete?
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    if(openModal == "True"){
+        $('#AddStudentModal').modal('show');
+    }
+</script>

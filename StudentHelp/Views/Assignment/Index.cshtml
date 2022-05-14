@@ -1,0 +1,98 @@
+﻿@using StudentHelp.Views.Assignment.POCO
+@model List<AssignmentPOCO>
+@{
+    ViewData["Title"] = "Assignments";
+}
+
+<h1>Assignments Page</h1>
+
+<hr />
+
+<!-- link to create assignment page-->
+<a asp-action="Create" asp-controller="Assignment" class="btn btn-primary">Add Assignment</a>
+
+<h2>All Assignments</h2>
+
+<table id="BasicDataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                Assignment ID
+            </th>
+            <th class="th-sm">
+                Course
+            </th>
+            <th class="th-sm">
+                Assignment Name
+            </th>
+            <th class="th-sm">
+                Description
+            </th>
+            <th class="th-sm">
+                Assigned
+            </th>
+            <th class="th-sm">
+                Due
+            </th>
+            <th class="th-sm">
+                Students
+            </th>
+            <th class="th-sm">
+                Delete
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var assignment in Model)
+        {
+            <tr>
+                <td>@assignment.AssignmentId</td>
+                <td>@assignment.CourseName</td>
+                <td>@assignment.Name</td>
+                <td>@assignment.Description</td>
+                <td>@assignment.AssignedDate.ToString("yyyy-MM-dd")</td>
+                <td>@assignment.DueDate.ToString("yyyy-MM-dd")</td>
+                <td><a asp-action="StudentAssignments" asp-controller="Assignment" asp-route-id="@assignment.AssignmentId" class="btn btn-info"> 	
+&#128269;</a></td>
+                <td><a asp-route-id="@assignment.CourseId" asp-action="Delete" asp-controller="Course" class="btn btn-danger">X</a></td>
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="th-sm">
+                Assignment ID
+            </th>
+            <th class="th-sm">
+                Course
+            </th>
+            <th class="th-sm">
+                Assignment Name
+            </th>
+            <th class="th-sm">
+                Description
+            </th>
+            <th class="th-sm">
+                Assigned
+            </th>
+            <th class="th-sm">
+                Due
+            </th>
+            <th class="th-sm">
+                Students
+            </th>
+            <th class="th-sm">
+                Delete
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    var openModal = "@ViewData["openModal"]";
+    if(openModal == "True"){
+        $('#AddAssignmentModal').modal('show');
+    }
+
+</script>

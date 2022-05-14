@@ -1,0 +1,26 @@
+﻿@page
+@model StudentHelpRazor.Areas.Course.Pages.CreateModel
+@{
+    ViewData["Title"] = "Students";
+}
+
+<h1>Add Course</h1>
+
+<form asp-action="Create">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <label asp-for="Course.Name" class="control-label">Course Name</label>
+        <span asp-validation-for="Course.Name" class="text-danger"></span>
+        <input class="form-control" type="text" asp-for="Course.Name" />
+
+        <br />
+
+        <label asp-for="Course.Description" class="control-label">Course Description</label>
+        <span asp-validation-for="Course.Description" class="text-danger"></span>
+        <textarea class="form-control" type="email" asp-for="Course.Description"></textarea>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Add Course</button>
+</form>
+

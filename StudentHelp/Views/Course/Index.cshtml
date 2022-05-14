@@ -1,0 +1,79 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Course Page";
+}
+
+<h1>Course Page</h1>
+
+<hr />
+
+<!-- Button to open add course modal-->
+<a asp-action="Create" asp-controller="Course" class="btn btn-success">Add Course</a>
+
+<h2 class="pt-5">All Courses</h2>
+
+<table id="BasicDataTable" class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm">
+                Course ID
+            </th>
+            <th class="th-sm">
+                Name
+            </th>
+            <th class="th-sm">
+                Description
+            </th>
+            <th class="th-sm">
+                Enrollment
+            </th>
+            <th class="th-sm">
+                Edit/Delete?
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseId</td>
+                <td>@course.Name</td>
+                <td>@course.Description</td>
+                <td><a class="ml-5 btn btn-info" asp-controller="Course" asp-action="EnrollStudents" asp-route-id="@course.CourseId">&#128203;</a></td>
+                <td>
+                    <a asp-route-id="@course.CourseId" asp-action="Update" asp-controller="Course" class="btn btn-warning">&#9998;</a>
+                    <a asp-route-id="@course.CourseId" asp-action="Delete" asp-controller="Course" class="btn btn-danger">&#128465;</a>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+    <tfoot>
+        <tr>
+            <th class="th-sm">
+                Course ID
+            </th>
+            <th class="th-sm">
+                Name
+            </th>
+            <th class="th-sm">
+                Description
+            </th>
+            <th class="th-sm">
+                Enrollment
+            </th>
+            <th class="th-sm">
+                Edit/Delete?
+            </th>
+        </tr>
+    </tfoot>
+</table>
+
+<script>
+    var openModal = "@ViewData["openModal"]";
+    if(openModal == "True"){
+        $('#AddCourseModal').modal('show');
+    }
+
+</script>
