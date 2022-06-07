@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHelp", "StudentHelp\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StudentHelpRazor", "StudentHelpWithRazor\StudentHelpRazor.csproj", "{C88620B9-F190-49A2-9699-F8D5D3885387}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "StudentHelperWebApi", "StudentHelperWebApi\StudentHelperWebApi.fsproj", "{3525C20F-1B70-4F31-A32E-7FC49D04E17D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentHelperWebApi", "StudentHelperWebApi\StudentHelperWebApi.csproj", "{0A9A8381-66B6-4DFF-939A-3566CDC287B0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{C88620B9-F190-49A2-9699-F8D5D3885387}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C88620B9-F190-49A2-9699-F8D5D3885387}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C88620B9-F190-49A2-9699-F8D5D3885387}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3525C20F-1B70-4F31-A32E-7FC49D04E17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3525C20F-1B70-4F31-A32E-7FC49D04E17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3525C20F-1B70-4F31-A32E-7FC49D04E17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3525C20F-1B70-4F31-A32E-7FC49D04E17D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A9A8381-66B6-4DFF-939A-3566CDC287B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A9A8381-66B6-4DFF-939A-3566CDC287B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A9A8381-66B6-4DFF-939A-3566CDC287B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A9A8381-66B6-4DFF-939A-3566CDC287B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

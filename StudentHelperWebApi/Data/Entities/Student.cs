@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace StudentHelp.Models
+namespace StudentHelperWebApi.Data.Entities
 {
     public partial class Student
     {

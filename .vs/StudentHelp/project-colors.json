@@ -15,7 +15,17 @@
       "ProjectGuid": "c88620b9-f190-49a2-9699-f8d5d3885387",
       "DisplayName": "StudentHelpWithRazor",
       "ColorIndex": 1
+    },
+    "3525c20f-1b70-4f31-a32e-7fc49d04e17d": {
+      "ProjectGuid": "3525c20f-1b70-4f31-a32e-7fc49d04e17d",
+      "DisplayName": "StudentHelperWebApiFsharp",
+      "ColorIndex": 2
+    },
+    "0a9a8381-66b6-4dff-939a-3566cdc287b0": {
+      "ProjectGuid": "0a9a8381-66b6-4dff-939a-3566cdc287b0",
+      "DisplayName": "StudentHelperWebApi",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 4
 }

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using StudentHelp.Data;
 using StudentHelp.Models;
+using StudentHelp.Validators;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -13,6 +16,8 @@ namespace StudentHelp.Controllers
     {
         private readonly StudenthelpContext _context;
         private readonly ILogger<HomeController> _logger;
+
+        BindingList<string> errors = new();
 
         public StudentController(ILogger<HomeController> logger, StudenthelpContext studenthelpContext)
         {
@@ -27,6 +32,7 @@ namespace StudentHelp.Controllers
 
         public IActionResult Create()
         {
+            ViewBag.Errors = errors;
             return View();
         }
 
@@ -37,7 +43,11 @@ namespace StudentHelp.Controllers
             ViewData["AllStudents"] = _context.Student.ToList();
             ViewData["openModal"] = false;
 
-            if (ModelState.IsValid)
+            StudentValidator validations = new();
+
+            var result = validations.Validate(student);
+
+            if (result.IsValid)
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
@@ -45,7 +55,12 @@ namespace StudentHelp.Controllers
             }
             else
             {
-                ViewData["openModal"] = true;
+                foreach (ValidationFailure failure in result.Errors)
+                {
+                    errors.Add(failure.ErrorMessage);
+                }
+
+                ViewBag.Errors = errors;
             }
 
             return View();

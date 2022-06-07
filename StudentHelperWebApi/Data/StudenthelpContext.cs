@@ -2,11 +2,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using StudentHelp.Models;
+using StudentHelperWebApi.Data.Entities;
 
 #nullable disable
 
-namespace StudentHelp.Data
+namespace StudentHelperWebApi.Data
 {
     public partial class StudenthelpContext : DbContext
     {
@@ -149,7 +149,6 @@ namespace StudentHelp.Data
                     .HasConstraintName("FK_StudentCourse_Student");
             });
 
-            OnModelCreatingGeneratedFunctions(modelBuilder);
             OnModelCreatingPartial(modelBuilder);
         }
 
