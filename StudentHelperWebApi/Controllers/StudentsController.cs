@@ -72,17 +72,17 @@ namespace StudentHelperWebApi.Controllers
         /// <param name="id">student id</param>
         /// <param name="student">student data</param>
         /// <returns>Nothing, but database should be updated if all goes well</returns>
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutStudent(Guid id, StudentPOCO student)
+        [HttpPut("{student}")]
+        public async Task<IActionResult> PutStudent(StudentPOCO student)
         {
-            if (id != student.StudentId)
+            if (student == null)
             {
                 return BadRequest();
             }
             else
             {
 
-                Student modifiedStudent = new Student()
+                Student modifiedStudent = new()
                 {
                     FirstName = student.FirstName,
                     LastName = student.LastName,
@@ -95,7 +95,7 @@ namespace StudentHelperWebApi.Controllers
 
                 var result = validation.Validate(modifiedStudent);
 
-                if (result.IsValid)
+                if (result.IsValid && _context.Student.Where(s => s.StudentId == modifiedStudent.StudentId).FirstOrDefault() != null)
                 {
                     _context.Entry(modifiedStudent).State = EntityState.Modified;
 
@@ -105,14 +105,7 @@ namespace StudentHelperWebApi.Controllers
                     }
                     catch (DbUpdateConcurrencyException)
                     {
-                        if (!StudentExists(id))
-                        {
-                            return NotFound();
-                        }
-                        else
-                        {
-                            throw;
-                        }
+                        throw;
                     }
 
                     return NoContent();

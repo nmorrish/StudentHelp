@@ -25,7 +25,12 @@
       "ProjectGuid": "0a9a8381-66b6-4dff-939a-3566cdc287b0",
       "DisplayName": "StudentHelperWebApi",
       "ColorIndex": 3
+    },
+    "db780b7a-e0d8-42b9-8b84-ae83e98f119e": {
+      "ProjectGuid": "db780b7a-e0d8-42b9-8b84-ae83e98f119e",
+      "DisplayName": "RazorApi",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }
